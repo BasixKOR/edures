@@ -14,7 +14,7 @@
 <ul>
     <li th:each="res: ${page}">
         <a th:text="'❤'+${res.liked.size()}" th:href="'/like?id='+${res.id}"></a>
-        <a th:href="${res.url}" th:text="${res.title}"></a> by <span th:text="${res.postedBy.email}"> at <span th:text="${#temporals.format(res.createdAt)}"></span> </span>
+        <a th:href="${res.url}" th:text="${res.title}"></a> by <span th:text="${res.postedBy.email}"> at <span th:text="${#temporals.format(res.createdAt, 'yyyy-MM-dd')}"></span> </span>
     </li>
 </ul>
 </body>
