@@ -18,9 +18,11 @@ public class Resource {
     @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE}, fetch = FetchType.EAGER)
     private Set<Account> liked;
 
+    @Column(updatable = false)
     @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE}, fetch = FetchType.EAGER)
     private Account postedBy;
 
+    @Column(updatable = false)
     @CreationTimestamp
     private LocalDate createdAt;
 
