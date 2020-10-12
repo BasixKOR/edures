@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edures 게시</title>
+</head>
+<body>
+<body>
+<h1>리소스 게시</h1> <hr>
+
+<form th:action="@{/post}" method="post">
+    <div><label> 제목: <input type="text" name="title"/> </label></div>
+    <div><label> 주소: <input type="url" name="url"/> </label></div>
+    <div><input type="submit" value="게시"/></div>
+</form>
+</body>
+</body>
+</html>
