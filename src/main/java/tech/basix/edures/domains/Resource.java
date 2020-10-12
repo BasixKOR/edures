@@ -72,4 +72,8 @@ public class Resource {
     public Account getPostedBy() {
         return postedBy;
     }
+
+    public LocalDate getCreatedAt() {
+        return createdAt;
+    }
 }
