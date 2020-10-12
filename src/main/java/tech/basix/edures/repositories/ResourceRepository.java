@@ -13,6 +13,6 @@ import java.util.Optional;
 public interface ResourceRepository extends PagingAndSortingRepository<Resource, Long> {
     Optional<Resource> findById(Long id);
     
-    @Query("SELECT res FROM Resource res ORDER BY size(res.liked) ASC, res.createdAt DESC")
+    @Query("SELECT res FROM Resource res ORDER BY size(res.liked) DESC, res.createdAt DESC")
     List<Resource> getResourcesSortedByLike(Pageable pageable);
 }
