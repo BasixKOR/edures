@@ -3,16 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <title>Edures 회원가입</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 </head>
 <body>
-<h1>회원 가입</h1> <hr>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item has-text-weight-semibold" href="/">
+            Edures
+        </a>
+    </div>
 
-<form th:action="@{/signup}" method="post">
-    <div><label> 이메일: <input type="email" name="email"/> </label></div>
-    <div><label> 비밀번호: <input type="password" name="password"/> </label></div>
-    <div><input type="submit" value="회원가입"/></div>
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item" th:href="@{/}">
+                홈
+            </a>
+
+            <a class="navbar-item" th:href="@{/post}">
+                게시
+            </a>
+        </div>
+
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-primary" th:href="@{/signup}">
+                        <strong>회원 가입</strong>
+                    </a>
+                    <a class="button is-light" th:href="@{/login}">
+                        로그인
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<form th:action="@{/signup}" method="post" class="container">
+    <div class="field">
+        <label class="label">이메일</label>
+        <div class="control">
+            <input class="input" type="email" name="email" placeholder="user@example.com">
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">비밀번호</label>
+        <div class="control">
+            <input class="input" type="password" name="password">
+        </div>
+    </div>
+    <div class="control">
+        <input type="submit" class="button is-primary" value="가입" />
+        <a class="button" href="/login">로그인</a>
+    </div>
 </form>
-
-<a href="/login">Go to login →</a>
 </body>
 </html>

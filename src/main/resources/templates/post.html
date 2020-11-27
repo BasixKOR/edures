@@ -3,15 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <title>Edures 게시</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 </head>
 <body>
 <body>
-<h1>리소스 게시</h1> <hr>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item has-text-weight-semibold" href="/">
+            Edures
+        </a>
+    </div>
 
-<form th:action="@{/post}" method="post">
-    <div><label> 제목: <input type="text" name="title"/> </label></div>
-    <div><label> 주소: <input type="url" name="url"/> </label></div>
-    <div><input type="submit" value="게시"/></div>
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item" th:href="@{/}">
+                홈
+            </a>
+
+            <a class="navbar-item" th:href="@{/post}">
+                게시
+            </a>
+        </div>
+
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <form th:action="@{/logout}" method="post" class="buttons">
+                    <a class="button is-primary" th:href="@{/signup}">
+                        <strong>회원 가입</strong>
+                    </a>
+                    <a class="button is-light" th:href="@{/login}">
+                        로그인
+                    </a>
+                    <input class="button is-text" type="submit" value="로그아웃"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<form th:action="@{/post}" method="post" class="container">
+    <div class="field">
+        <label class="label">제목</label>
+        <div class="control">
+            <input class="input" type="text" name="title">
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">주소</label>
+        <div class="control">
+            <input class="input" type="url" name="url">
+        </div>
+    </div>
+    <div class="control"><input type="submit" class="button is-primary" value="게시"/></div>
 </form>
 </body>
 </body>

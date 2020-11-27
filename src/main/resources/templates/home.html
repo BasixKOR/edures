@@ -3,19 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>Edures</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 </head>
 <body>
-<a th:href="@{/login}">로그인</a>&nbsp;
-<a th:href="@{/signup}">회원가입</a>
-<a th:href="@{/post}">게시</a>
-<form th:action="@{/logout}" method="post">
-    <input type="submit" value="로그아웃"/>
-</form>
-<ul>
-    <li th:each="res: ${page}">
-        <a th:text="'❤'+${res.liked.size()}" th:href="'/like?id='+${res.id}"></a>
-        <a th:href="${res.url}" th:text="${res.title}"></a> by <span th:text="${res.postedBy.email}"> at <span th:text="${#temporals.format(res.createdAt, 'yyyy-MM-dd')}"></span> </span>
-    </li>
-</ul>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item has-text-weight-semibold" href="/">
+            Edures
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item" th:href="@{/}">
+                홈
+            </a>
+
+            <a class="navbar-item" th:href="@{/post}">
+                게시
+            </a>
+        </div>
+
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <form th:action="@{/logout}" method="post" class="buttons">
+                    <a class="button is-primary" th:href="@{/signup}">
+                        <strong>회원 가입</strong>
+                    </a>
+                    <a class="button is-light" th:href="@{/login}">
+                        로그인
+                    </a>
+                    <input class="button is-text" type="submit" value="로그아웃"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <article class="media" th:each="res: ${page}">
+        <div class="media-content content">
+            <p>
+                <strong th:text="${res.postedBy.email}"></strong> <small th:text="${#temporals.format(res.createdAt, 'yyyy-MM-dd')}"></small>
+                <br>
+                <a th:href="${res.url}" th:text="${res.title}"></a>
+            </p>
+        </div>
+        <div class="media-right">
+            <a th:text="'❤ '+${res.liked.size()}" th:href="'/like?id='+${res.id}"></a>
+        </div>
+    </article>
+</div>
 </body>
 </html>
